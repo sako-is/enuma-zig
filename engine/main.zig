@@ -1,0 +1,1 @@
+pub const App = @import("core/app.zig");

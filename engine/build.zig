@@ -6,13 +6,13 @@ pub fn build(b: *std.build.Builder) void {
     // between Debug, ReleaseSafe, ReleaseFast, and ReleaseSmall.
     const mode = b.standardReleaseOptions();
 
-    const lib = b.addSharedLibrary("engine", "src/main.zig", b.version(0, 0, 1);
+    const lib = b.addSharedLibrary("enuma", "main.zig", b.version(0, 0, 1));
     lib.setBuildMode(mode);
     lib.addPackage(glfw.pkg);
     try glfw.link(b, lib, .{});
     lib.install();
 
-    const main_tests = b.addTest("src/main.zig");
+    const main_tests = b.addTest("main.zig");
     main_tests.setBuildMode(mode);
 
     const test_step = b.step("test", "Run library tests");
