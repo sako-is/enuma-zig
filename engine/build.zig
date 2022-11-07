@@ -1,5 +1,5 @@
 const std = @import("std");
-const glfw = @import("lib/glfw/build.zig");
+const glfw = @import("../lib/glfw/build.zig");
 
 pub fn build(b: *std.build.Builder) void {
     // Standard release options allow the person running `zig build` to select
@@ -18,3 +18,4 @@ pub fn build(b: *std.build.Builder) void {
     const test_step = b.step("test", "Run library tests");
     test_step.dependOn(&main_tests.step);
 }
+

@@ -2,19 +2,19 @@ const std = @import("std");
 const testing = std.testing;
 const glfw = @import("glfw");
 
-const Engine = struct {
+pub const Engine = struct {
     x: u16 = 100, 
     y: u16 = 100,
     width: u16 = 600, 
     height: u16 = 480, 
-    name: []const u8,753
+    name: []const u8,
 
-    pub fn start_engine(*Engine engine) !void {
+    pub fn start_engine(self: *Engine) !void {
         try glfw.init(.{});
         defer glfw.terminate();
 
         const window =
-            try glfw.Window.create(engine.width, engine.height, engine.name, null, null, .{});
+            try glfw.Window.create(self.width, self.height, self.name, null, null, .{});
         defer window.destroy();
     
         while (!window.shouldClose()) {
@@ -24,7 +24,7 @@ const Engine = struct {
 };
 
 pub fn create_engine(x: u16, y: u16, width: u16, height: u16, name: []const u8) Engine {
-    Engine engine = {
+    var engine = Engine {
         .x = x,
         .y = y,
         .width = width,
@@ -33,4 +33,10 @@ pub fn create_engine(x: u16, y: u16, width: u16, height: u16, name: []const u8) 
     };
 
     return engine;
+}
+
+test "engine init" { 
+    var engine: Engine = create_engine(100, 100, 640, 480, "enuma");
+
+    engine.start_engine();
 }
