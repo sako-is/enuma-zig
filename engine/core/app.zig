@@ -1,6 +1,6 @@
 const std = @import("std");
 const testing = std.testing;
-const glfw = @import("glfw");
+const glfw = @import("../main.zig").glfw;
 
 pub const Engine = struct {
     x: u16 = 100, 
