@@ -53,7 +53,7 @@ pub fn Mat4(comptime T: type) type {
 }
 
 test "initializing vecs and mats" {
-    const vec2 = Vec2(i32).init(10, 5);
+    const vec2 = Vec2(i32).init(10, 5); 
 
     std.log.info("x: {}, y: {}", .{ vec2.x, vec2.y });
     assert(vec2.x == 10);
